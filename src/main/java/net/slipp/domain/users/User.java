@@ -2,6 +2,7 @@ package net.slipp.domain.users;
 
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class User {
@@ -15,7 +16,7 @@ public class User {
 	@NotEmpty
 	private String name;
 	
-	@NotEmpty
+	@Email
 	private String email;
 	
 	public User() {

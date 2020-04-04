@@ -36,5 +36,4 @@ public class UserTest {
 			log.debug("error : {}", constraintViolation.getMessage());
 		}
 	}
-
 }
