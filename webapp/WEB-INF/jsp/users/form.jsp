@@ -6,7 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<c:choose>
+<c:when test="${empty user.userId}">
 <title>KHS블로그 :: 회원가입</title>
+</c:when>
+<c:otherwise>
+<title>KHS블로그 :: 회원정보수정</title>
+</c:otherwise>
+</c:choose>
+
 
 <%@ include file="../commons/_header.jspf"%>
 
@@ -19,7 +27,14 @@
 			<div class="span12">
 				<section id="typography">
 					<div class="page-header">
+						<c:choose>
+						<c:when test="${empty user.userId}">
 						<h1>회원가입</h1>
+						</c:when>
+						<c:otherwise>
+						<h1>회원정보수정</h1>
+						</c:otherwise>
+						</c:choose>
 					</div>
 					
 					<c:choose>
@@ -70,7 +85,14 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
+								<c:choose>
+								<c:when test="${empty user.userId}">
 								<button type="submit" class="btn btn-primary">회원가입</button>
+								</c:when>
+								<c:otherwise>
+								<button type="submit" class="btn btn-primary">회원정보수정</button>
+								</c:otherwise>
+								</c:choose>
 							</div>
 						</div>					
 					</form:form>

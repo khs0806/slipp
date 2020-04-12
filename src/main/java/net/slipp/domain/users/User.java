@@ -74,6 +74,12 @@ public class User {
 		}
 		return inputUserId.equals(this.userId);
 	}
+	public User update(User updateUser) {
+		if (!matchUserId(updateUser.userId)) {
+			throw new IllegalArgumentException();
+		}
+		return new User(this.userId, updateUser.getPassword(), updateUser.getName(), updateUser.getEmail());
+	}
 	
 	@Override
 	public int hashCode() {
@@ -116,6 +122,8 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + "]";
 	}
+
+	
 
 	
 

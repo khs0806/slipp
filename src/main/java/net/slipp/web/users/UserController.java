@@ -112,11 +112,12 @@ public class UserController {
 		if (temp == null) {
 			throw new NullPointerException();
 		}
-		String userId = (String)session.getAttribute("userId");
+		
+		String userId = (String)temp;
 		if (!user.matchUserId(userId)) {
 			throw new NullPointerException();
 		}
-
+		
 		userDao.update(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
