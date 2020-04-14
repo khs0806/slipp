@@ -97,11 +97,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public String updateDo(@Valid User user, BindingResult bindingResult, HttpSession session) {
+	public String updateDo(@Valid User user, BindingResult result, HttpSession session) {
 		log.debug("User : {}", user);
-		if (bindingResult.hasErrors()) {
+		if (result.hasErrors()) {
 			log.debug("Binding Result has error!");
-			List<ObjectError> errors = bindingResult.getAllErrors();
+			List<ObjectError> errors = result.getAllErrors();
 			for (ObjectError error : errors) {
 				log.debug("error : {}, {}", error.getObjectName(), error.getDefaultMessage());
 			}
@@ -118,6 +118,8 @@ public class UserController {
 			throw new NullPointerException();
 		}
 		
+		
+//		user.update(user);
 		userDao.update(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
